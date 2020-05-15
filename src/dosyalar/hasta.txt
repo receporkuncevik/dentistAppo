@@ -1,0 +1,3 @@
+ID: 1 Adı Soyadı=Recep Çevik, Telefon Numarası=234234234, Email=asdasda@gmail.com
+ID: 2 Adı Soyadı=Tolga Demiralp, Telefon Numarası=13123123, Email=ahjhkhjk@gmail.com
+ID: 3 Adı Soyadı=Recep Çevik, Telefon Numarası=234234234, Email=asdasda@gmail.com

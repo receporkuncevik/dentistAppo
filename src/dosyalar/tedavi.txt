@@ -1,0 +1,6 @@
+ID : 1 Tedavi Adı: Dolgu
+Tedavi Açıklaması:Dolgu işlemi, çürümüş, kırılmış ya da çatlak olan dişlere uygulanan bir yöntemdir.
+ID : 2 Tedavi Adı: Diş Çekimi
+Tedavi Açıklaması:Diş çekimi, bir diş hekimi veya ağız cerrahı tarafından lokal, genel,
+intravenöz anestezi veya bir kombinasyonu ile nispeten hızlı gerçekleştirilen bir ayakta tedavi prosedürü olarak yapılan,
+dişin kemikteki soket denilen yuvasından cerrahi müdahale ile çıkarılması işlemine verilen isimdir.

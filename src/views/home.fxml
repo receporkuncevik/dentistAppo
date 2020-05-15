@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.Avatar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1038.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="views.HomeController">
+   <children>
+      <SplitPane layoutX="119.0" layoutY="74.0" prefHeight="900.0" prefWidth="304.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="734.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="300.0" stylesheets="@../../../dentistAppointment/src/dentistappointment/Css/style.css">
+               <children>
+                  <VBox layoutY="7.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #f1f2f6;">
+                           <children>
+                              <Avatar layoutX="90.0" layoutY="80.0" radius="60.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="80.0">
+                                 <image>
+                                    <Image url="@../../../dentistAppointment/src/dentistappointment/Login/image/tooth.png" />
+                                 </image>
+                              </Avatar>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="600.0" prefWidth="237.0" style="-fx-background-color: #17c0eb;">
+                           <children>
+                              <VBox layoutY="102.0" prefHeight="212.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="300.0" style="-fx-background-color: #17c0eb;" text="Randevu" textFill="WHITE">
+                                       <graphic>
+                                          <ImageView fitHeight="17.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../dentistAppointment/src/dentistappointment/Login/image/calendar.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="180.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="300.0" style="-fx-background-color: #17c0eb;" text="Hasta" textFill="WHITE">
+                                       <graphic>
+                                          <ImageView fitHeight="24.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../dentistAppointment/src/dentistappointment/Login/image/patient.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                    <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="300.0" style="-fx-background-color: #17c0eb;" text="Doktor" textFill="WHITE">
+                                       <graphic>
+                                          <ImageView fitHeight="17.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../dentistAppointment/src/dentistappointment/Login/image/doctor.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                    <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="300.0" style="-fx-background-color: #17c0eb;" text="Tedavi" textFill="WHITE">
+                                       <graphic>
+                                          <ImageView fitHeight="17.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../dentistAppointment/src/dentistappointment/Login/image/heart.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
