@@ -1,4 +1,1 @@
-ID= 1 İsim Soyisim:Ayşe Fatma Telefon No:345345 Cinsiyet: Kadın Unvan: Cerrah
-ID= 2 İsim Soyisim:Demet Akalın Telefon No:234234234 Cinsiyet: Kadın Unvan: Cerrah
-ID= 2 İsim Soyisim:Ben Fero Telefon No:123123 Cinsiyet: Erkek Unvan: Cerrah
-ID= 4 İsim Soyisim:Recep Telefon No:23423423 Cinsiyet: Erkek Unvan: Ortodontist
+1	Recep Çevik	46456	Erkek	Cerrah

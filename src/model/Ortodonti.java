@@ -5,12 +5,6 @@
  */
 package model;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.util.ArrayList;
-
 /**
  *
  * @author RecepOrkun
@@ -19,30 +13,24 @@ public class Ortodonti extends Doktor {
 
     private String unvan;
 
-    public Ortodonti(int id, String isimSoyisim, String telefonNo, String cinsiyet) {
+    public Ortodonti(int id, String isimSoyisim, String telefonNo, String cinsiyet,String unvan) {
         super(id, isimSoyisim, telefonNo, cinsiyet);
-        unvan = "Ortodontist";
+        this.unvan = unvan;
     }
 
     @Override
     public String toString() {
-        return super.toString() + " Unvan: " + unvan;
+       return getId() + "\t"+ getIsimSoyisim() + "\t"+ getTelefonNo() + "\t" + getCinsiyet() + "\t" + getUnvan();
     }
 
-    @Override
-    public void ekle(Doktor doktor) {
-        getDoktorListesi().add(doktor);
+    public String getUnvan() {
+        return unvan;
     }
 
-    @Override
-    public void listele() {
-        
+    public void setUnvan(String unvan) {
+        this.unvan = unvan;
     }
 
-    @Override
-    public void sil(Doktor doktor) {
-        getDoktorListesi().remove(doktor);
-    }
-
+    
    
 }
