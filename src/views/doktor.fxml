@@ -128,7 +128,7 @@
             </HBox>
             <HBox alignment="BASELINE_RIGHT" layoutX="6.0" layoutY="797.0" prefHeight="70.0" prefWidth="733.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="797.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="142.0" style="-fx-background-color: #f1f2f6;" text="Düzenle">
+                  <Button mnemonicParsing="false" onAction="#doktorDuzenleDialog" prefHeight="60.0" prefWidth="142.0" style="-fx-background-color: #f1f2f6;" text="Düzenle">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>

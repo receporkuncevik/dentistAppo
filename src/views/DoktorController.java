@@ -92,6 +92,31 @@ public class DoktorController implements Initializable {
         stage.showAndWait();
 
     }
+    
+    @FXML
+    void doktorDuzenleDialog(ActionEvent event) throws IOException {
+        if(doktorListele.getSelectionModel().getSelectedItem() == null) return;
+        
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("doktorDuzenle.fxml"));
+            Parent parent = loader.load();
+            DoktorDuzenleController doktorDuzenle = loader.<DoktorDuzenleController>getController();
+            Doktor d = doktorListele.getSelectionModel().getSelectedItem();
+            loader.setController(doktorDuzenle);
+            doktorDuzenle.initData(d);
+            Stage duzenleStage = new Stage();
+            Scene scene = new Scene(parent,420,370);
+            duzenleStage.setTitle("Doktor Düzenle");
+            doktorDuzenle.setDoktorList(dList);
+            
+            duzenleStage.initModality(Modality.APPLICATION_MODAL);
+            duzenleStage.setScene(scene);
+            duzenleStage.showAndWait();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
