@@ -54,7 +54,6 @@ public class DoktorController implements Initializable {
     private TableColumn<Doktor, String> tUnvan = new TableColumn<>();
 
     private ObservableList<Doktor> getDoktorFromFile() {
-        
         try {
             BufferedReader br = new BufferedReader(new FileReader(new File("src/dosyalar/doktor.txt")));
             String line;
