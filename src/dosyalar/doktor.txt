@@ -1,2 +1,0 @@
-2	Recep Çevik	76567	Erkek	Cerrah
-3	fdgfd	34345	Erkek	Ortodonti

@@ -125,7 +125,7 @@ public class DoktorController implements Initializable {
         tCinsiyet.setCellValueFactory(new PropertyValueFactory<>("cinsiyet"));
         tUnvan.setCellValueFactory(new PropertyValueFactory<>("unvan"));
         doktorListele.setItems(getDoktorFromFile());
-        doktorListele.getColumns().addAll(tID, tAdSoyad, tPhone, tCinsiyet, tUnvan);
+        //doktorListele.getColumns().addAll(tID, tAdSoyad, tPhone, tCinsiyet, tUnvan);
         doktorListele.setItems(dList);
         
         

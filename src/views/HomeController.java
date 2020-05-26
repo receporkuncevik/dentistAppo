@@ -49,7 +49,9 @@ public class HomeController implements Initializable{
     }
 
     @FXML
-    private void tedavi(MouseEvent event) {
+    private void tedavi(MouseEvent event) throws IOException {
+        borderPane.setCenter(centerAnchorPane);
+         loadPage("tedavi");
     }
     
     private void loadPage(String page) throws IOException{

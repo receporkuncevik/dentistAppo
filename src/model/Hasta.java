@@ -27,7 +27,7 @@ public class Hasta {
     }
 
     public void hastalistele() {
-        
+
     }
 
     public void hastaAra(Hasta hasta) {
@@ -86,9 +86,7 @@ public class Hasta {
 
     @Override
     public String toString() {
-        return "ID: " + hasta_id + " Adı Soyadı=" + hasta_adSoyad + ", Telefon Numarası=" + hasta_telefonNo + ", Email=" + hasta_email;
+        return getHasta_id() + "\t" + getHasta_adSoyad() + "\t" + getHasta_telefonNo() + "\t" + getHasta_email();
     }
-
-    
 
 }

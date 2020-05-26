@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="763.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.HastaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="763.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.TedaviController">
    <children>
       <HBox layoutY="24.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="67.0" prefWidth="740.0" AnchorPane.bottomAnchor="672.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="28.0" prefWidth="181.0" text="Hasta Listesi">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="28.0" prefWidth="181.0" text="Tedavi Listesi">
                <HBox.margin>
                   <Insets left="35.0" top="21.0" />
                </HBox.margin>
@@ -26,7 +26,7 @@
             </Label>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#hastaEkleDialog" style="-fx-background-color: #f1f2f6;" text="Ekle">
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#tedaviEkleDialog" style="-fx-background-color: #f1f2f6;" text="Ekle">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -42,16 +42,9 @@
             </StackPane>
          </children>
       </HBox>
-      <TableView fx:id="hastaListele" layoutX="16.0" layoutY="135.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="546.0" prefWidth="714.0" AnchorPane.bottomAnchor="87.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="130.0">
-         <columns>
-            <TableColumn fx:id="tID" prefWidth="194.0" text="ID" />
-            <TableColumn fx:id="tAdıSoyadı" prefWidth="150.0" text="Adı Soyadı" />
-            <TableColumn fx:id="tTelNo" prefWidth="125.0" text="Telefon Numarası" />
-            <TableColumn fx:id="tEmail" prefWidth="244.0" text="Email" />
-         </columns></TableView>
       <HBox alignment="BASELINE_RIGHT" layoutX="91.0" layoutY="690.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="46.0" prefWidth="627.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="690.0">
          <children>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#hastaDuzenleDialog" style="-fx-background-color: #f1f2f6;" text="Düzenle">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#tedaviDuzenleDialog" style="-fx-background-color: #f1f2f6;" text="Düzenle">
                <graphic>
                   <ImageView fitHeight="31.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -63,7 +56,7 @@
                   <Insets right="20.0" top="4.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="hastaSil" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #f1f2f6;" text="Sil">
+            <Button fx:id="tedaviSil" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #f1f2f6;" text="Sil">
                <graphic>
                   <ImageView fitHeight="31.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -77,5 +70,12 @@
             </Button>
          </children>
       </HBox>
+      <TableView fx:id="tedaviListesi" layoutX="270.0" layoutY="182.0" prefHeight="535.0" prefWidth="710.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="135.0">
+        <columns>
+          <TableColumn fx:id="tabloId" prefWidth="64.0" text="ID" />
+          <TableColumn fx:id="tabloTedaviAdi" prefWidth="211.0" text="Tedavi Adı" />
+            <TableColumn fx:id="tabloTedaviAciklama" prefWidth="433.0" text="Tedavi Açıklama" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

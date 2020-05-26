@@ -1,35 +1,27 @@
 package model;
 
-public class DisCekimi extends Tedavi{
+public class DisCekimi extends Tedavi {
 
     private String tedaviAciklama;
 
-    public DisCekimi(int tedavi_id, String tedavi_adi) {
+    public DisCekimi(int tedavi_id, String tedavi_adi, String tedaviAciklama) {
         super(tedavi_id, tedavi_adi);
-        tedaviAciklama = "Diş çekimi, bir diş hekimi veya ağız cerrahı tarafından lokal, genel,\n"
-                + "intravenöz anestezi veya bir kombinasyonu ile nispeten hızlı gerçekleştirilen bir ayakta tedavi prosedürü olarak yapılan,\n"
-                + "dişin kemikteki soket denilen yuvasından cerrahi müdahale ile çıkarılması işlemine verilen isimdir.";
+        this.tedaviAciklama = tedaviAciklama;
     }
 
-    @Override
-    public void ekle(Tedavi tedavi) {
-        getTedaviListesi().add(tedavi);
+    public String getTedaviAciklama() {
+        return tedaviAciklama;
     }
 
-    @Override
-    public void listele() {
-    }
-
-    @Override
-    public void sil(Tedavi tedavi) {
-      getTedaviListesi().remove(tedavi);
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() + "\nTedavi Açıklaması:" + tedaviAciklama;
+    public void setTedaviAciklama(String tedaviAciklama) {
+        this.tedaviAciklama = tedaviAciklama;
     }
 
     
+    
+    @Override
+    public String toString() {
+        return +getTedavi_id() + "\t" + getTedavi_adi() + "\t" + getTedaviAciklama();
+    }
 
 }
