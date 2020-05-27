@@ -48,23 +48,25 @@ public class TedaviEkleController implements Initializable {
         // TODO
     }
 
-    private void tedaviEkle(ActionEvent event) {
+    @FXML
+    void tedaviEkle(ActionEvent event) {
         int tedaviID = Integer.parseInt(txtId.getText().trim());
         String tedaviAdi = txtAd.getText().trim();
         String tedaviAciklama = txtAciklama.getText().trim();
         if ("Dolgu".equals(tedaviAdi)) {
-            Dolgu d = new Dolgu(tedaviID, tedaviAdi, tedaviAciklama);
-            tedaviList.add(d);
+            Tedavi t1 = new Dolgu(tedaviID, tedaviAdi, tedaviAciklama);
+            tedaviList.add(t1);
             DosyaIslemleri.dosyayaYaz(tedaviList, "src/dosyalar/tedavi.txt");
         } else if ("Dis Cekimi".equals(tedaviAdi)) {
-            DisCekimi dc = new DisCekimi(tedaviID, tedaviAdi, tedaviAciklama);
+            Tedavi dc = new DisCekimi(tedaviID, tedaviAdi, tedaviAciklama);
             tedaviList.add(dc);
             DosyaIslemleri.dosyayaYaz(tedaviList, "src/dosyalar/tedavi.txt");
         }     
         closeStage(event);
     }
 
-    private void tedaviEkleClose(ActionEvent event) {
+    @FXML
+    void tedaviEkleClose(ActionEvent event) {
         closeStage(event);
     }
 

@@ -64,6 +64,9 @@ public class TedaviController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        tList.removeAll(tList);
+        tedaviListesi.getItems().clear();
+        tedaviListesi.refresh();
         tabloId.setCellValueFactory(new PropertyValueFactory<>("tedavi_id"));
         tabloTedaviAdi.setCellValueFactory(new PropertyValueFactory<>("tedavi_adi"));
         tabloTedaviAciklama.setCellValueFactory(new PropertyValueFactory<>("tedaviAciklama"));
@@ -81,7 +84,7 @@ public class TedaviController implements Initializable {
     }
 
     @FXML
-    private void tedaviEkleDialog(ActionEvent event) throws IOException {
+    void tedaviEkleDialog(ActionEvent event) throws IOException {
 
         FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("tedaviEkle.fxml"));
         Parent parent = fXMLLoader.load();
@@ -96,7 +99,7 @@ public class TedaviController implements Initializable {
     }
 
     @FXML
-    private void tedaviDuzenleDialog(ActionEvent event) {
+    void tedaviDuzenleDialog(ActionEvent event) {
 
         if(tedaviListesi.getSelectionModel().getSelectedItem() == null) return;
         

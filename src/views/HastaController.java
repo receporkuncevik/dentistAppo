@@ -105,6 +105,7 @@ public class HastaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        hList.removeAll(hList);
         tID.setCellValueFactory(new PropertyValueFactory<>("hasta_id"));
         tAdıSoyadı.setCellValueFactory(new PropertyValueFactory<>("hasta_adSoyad"));
         tTelNo.setCellValueFactory(new PropertyValueFactory<>("hasta_telefonNo"));

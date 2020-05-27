@@ -119,6 +119,7 @@ public class DoktorController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        dList.removeAll(dList);
         tID.setCellValueFactory(new PropertyValueFactory<>("id"));
         tAdSoyad.setCellValueFactory(new PropertyValueFactory<>("isimSoyisim"));
         tPhone.setCellValueFactory(new PropertyValueFactory<>("telefonNo"));
@@ -127,6 +128,7 @@ public class DoktorController implements Initializable {
         doktorListele.setItems(getDoktorFromFile());
         //doktorListele.getColumns().addAll(tID, tAdSoyad, tPhone, tCinsiyet, tUnvan);
         doktorListele.setItems(dList);
+        
         
         
         doktorSil.setOnAction(e->{
