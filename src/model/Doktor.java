@@ -1,5 +1,11 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public abstract class Doktor {
 
     private int id;
@@ -13,6 +19,24 @@ public abstract class Doktor {
         this.isimSoyisim = isimSoyisim;
         this.telefonNo = telefonNo;
         this.cinsiyet = cinsiyet;
+    }
+    
+    public static ObservableList<String> getDoktorAdiFromFile() {
+        ObservableList<String> doktorAdi = FXCollections.observableArrayList();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(new File("src/dosyalar/doktor.txt")));
+            String line;
+            String[] satir;
+            while ((line = br.readLine()) != null) {
+                satir = line.split("\t");
+                String doktor = satir[1];
+                doktorAdi.add(doktor);
+            }
+            br.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return doktorAdi;
     }
 
     public int getId() {

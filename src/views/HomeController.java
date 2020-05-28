@@ -3,6 +3,8 @@ package views;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,11 +31,19 @@ public class HomeController implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         
+          
+        try {
+            borderPane.setCenter(centerAnchorPane);
+            loadPage("randevu");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }  
 
     @FXML
-    private void randevu(MouseEvent event) {
+    private void randevu(MouseEvent event) throws IOException {
+        borderPane.setCenter(centerAnchorPane);
+        loadPage("randevu");
     }
 
     @FXML

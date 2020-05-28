@@ -82,7 +82,7 @@ public class DoktorController implements Initializable {
         Parent parent = fXMLLoader.load();
         DoktorEkleController doktorEkleController = fXMLLoader.<DoktorEkleController>getController();
         doktorEkleController.setDoktorList(dList);
-        Scene scene = new Scene(parent, 420, 370);
+        Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
  
@@ -104,7 +104,7 @@ public class DoktorController implements Initializable {
             loader.setController(doktorDuzenle);
             doktorDuzenle.initData(d);
             Stage duzenleStage = new Stage();
-            Scene scene = new Scene(parent,420,370);
+            Scene scene = new Scene(parent);
             duzenleStage.setTitle("Doktor Düzenle");
             doktorDuzenle.setDoktorList(dList);
             
@@ -119,7 +119,7 @@ public class DoktorController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        dList.removeAll(dList);
+        dList.removeAll(dList); 
         tID.setCellValueFactory(new PropertyValueFactory<>("id"));
         tAdSoyad.setCellValueFactory(new PropertyValueFactory<>("isimSoyisim"));
         tPhone.setCellValueFactory(new PropertyValueFactory<>("telefonNo"));

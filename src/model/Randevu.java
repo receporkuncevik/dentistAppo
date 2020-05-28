@@ -1,39 +1,26 @@
 
 package model;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Randevu {
 
     private int id;
-    private Hasta hasta;
-    private Tedavi tedavi;
-    private Date randevuTarihi;
-    public static ArrayList<Randevu> randevuListesi = new ArrayList<>();
+    private String doktor;
+    private String hasta;
+    private String tedavi;
+    private LocalDate randevuTarihi;
+    private String saat;
 
-    public Randevu(int id, Hasta hasta, Tedavi tedavi, Date randevuTarihi) {
+    public Randevu(int id, String doktor, String hasta, String tedavi, LocalDate randevuTarihi, String saat) {
         this.id = id;
+        this.doktor = doktor;
         this.hasta = hasta;
         this.tedavi = tedavi;
         this.randevuTarihi = randevuTarihi;
+        this.saat = saat;
     }
 
-    public static void randevuEkle(Randevu randevu){
-        randevuListesi.add(randevu);
-    }
-    
-    public static void randevuListele(){
-        for(Randevu r:randevuListesi){
-            System.out.println(r);
-        }
-    }
-    
-    public static void hastaSil(Randevu randevu){
-        randevuListesi.remove(randevu);
-    }
-    
-    
     public int getId() {
         return id;
     }
@@ -42,18 +29,55 @@ public class Randevu {
         this.id = id;
     }
 
-    public Date getRandevuTarihi() {
+    public String getDoktor() {
+        return doktor;
+    }
+
+    public void setDoktor(String doktor) {
+        this.doktor = doktor;
+    }
+
+    public String getHasta() {
+        return hasta;
+    }
+
+    public void setHasta(String hasta) {
+        this.hasta = hasta;
+    }
+
+    public String getTedavi() {
+        return tedavi;
+    }
+
+    public void setTedavi(String tedavi) {
+        this.tedavi = tedavi;
+    }
+
+    public String getSaat() {
+        return saat;
+    }
+
+    public void setSaat(String saat) {
+        this.saat = saat;
+    } 
+
+    public LocalDate getRandevuTarihi() {
         return randevuTarihi;
     }
 
-    public void setRandevuTarihi(Date randevuTarihi) {
+    public void setRandevuTarihi(LocalDate randevuTarihi) {
         this.randevuTarihi = randevuTarihi;
     }
 
     @Override
     public String toString() {
-        return  "ID: " + id + " Hasta: " + hasta.getHasta_adSoyad() + " Tedavi: " + tedavi.getTedavi_adi() + " RandevuTarihi: " + randevuTarihi;
+        return  getId() + "\t" + getDoktor() + "\t" + getHasta() + "\t" + getTedavi() + "\t" + getRandevuTarihi() + "\t" + getSaat();
     }
+    
+    
+
+
+    
 
     
 
