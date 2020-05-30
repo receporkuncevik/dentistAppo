@@ -26,7 +26,7 @@ import model.Hasta;
 
 public class HastaController implements Initializable {
 
-    static ObservableList<Hasta> hList = FXCollections.observableArrayList();
+    public static ObservableList<Hasta> hList = FXCollections.observableArrayList();
     @FXML
     private TableView<Hasta> hastaListele;
 
@@ -45,7 +45,7 @@ public class HastaController implements Initializable {
     @FXML
     private Button hastaSil;
 
-    private ObservableList<Hasta> getHastaFromFile() {
+    public static ObservableList<Hasta> getHastaFromFile() {
         try {
             BufferedReader br = new BufferedReader(new FileReader(new File("src/dosyalar/hasta.txt")));
             String line;
@@ -112,7 +112,6 @@ public class HastaController implements Initializable {
         tEmail.setCellValueFactory(new PropertyValueFactory<>("hasta_email"));
 
         hastaListele.setItems(getHastaFromFile());
-        //hastaListele.getColumns().addAll(tID, tAdıSoyadı, tTelNo, tEmail);
         hastaListele.setItems(hList);
         
         

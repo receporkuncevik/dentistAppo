@@ -79,7 +79,7 @@ public class TedaviController implements Initializable {
             Tedavi seciliTedavi = tedaviListesi.getSelectionModel().getSelectedItem();
             tedaviListesi.getItems().remove(seciliTedavi);
             tList.remove(seciliTedavi);
-            DosyaIslemleri.dosyayaYaz(tList, "src/dosyalar/doktor.txt");
+            DosyaIslemleri.dosyayaYaz(tList, "src/dosyalar/tedavi.txt");
         });
     }
 

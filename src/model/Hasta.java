@@ -2,9 +2,12 @@ package model;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Hasta {
 
@@ -12,7 +15,6 @@ public class Hasta {
     private String hasta_adSoyad;
     private String hasta_telefonNo;
     private String hasta_email;
-    public ArrayList<Hasta> hastaListesi = new ArrayList<>();
 
     public Hasta(int hasta_id, String hasta_adSoyad, String hasta_telefonNo, String hasta_email) {
         this.hasta_id = hasta_id;
@@ -21,35 +23,24 @@ public class Hasta {
         this.hasta_email = hasta_email;
 
     }
-
-    public void hastaEkle(Hasta hasta) {
-        hastaListesi.add(hasta);
-    }
-
-    public void hastalistele() {
-
-    }
-
-    public void hastaAra(Hasta hasta) {
-        if (hastaListesi.contains(hasta)) {
-            System.out.println("Hasta Var");
-        } else {
-            System.out.println("Hasta Yok");
+    
+    
+    public static ObservableList<String> getHastaAdiFromFile() {
+        ObservableList<String> hastaAdi = FXCollections.observableArrayList();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(new File("src/dosyalar/hasta.txt")));
+            String line;
+            String[] satir;
+            while ((line = br.readLine()) != null) {
+                satir = line.split("\t");
+                String hasta = satir[1];
+                hastaAdi.add(hasta);
+            }
+            br.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-    }
-
-    public void hastaSil(Hasta hasta) {
-        hastaListesi.remove(hasta);
-    }
-
-    public void hastaSil(Hasta hasta, int id) {
-        if (hasta.getHasta_id() == id) {
-            hastaListesi.remove(hasta);
-            System.out.println("Hasta Silindi Overload");
-        } else {
-            System.out.println("Hasta Silinemedi.");
-        }
-
+        return hastaAdi;
     }
 
     public int getHasta_id() {

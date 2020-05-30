@@ -18,30 +18,71 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.DosyaIslemleri;
+import model.Randevu;
 
 public class RandevuController implements Initializable {
 
     @FXML
-    private TableView<?> randevuListele;
+    private TableView<Randevu> randevuListele;
     @FXML
-    private TableColumn<?, ?> tblClID;
+    private TableColumn<Randevu, Integer> tblClID;
     @FXML
-    private TableColumn<?, ?> tblClDoktorAdi;
+    private TableColumn<Randevu, String> tblClDoktorAdi;
     @FXML
-    private TableColumn<?, ?> tblClHastaAdi;
+    private TableColumn<Randevu, String> tblClHastaAdi;
     @FXML
-    private TableColumn<?, ?> tblClTarihi;
+    private TableColumn<Randevu, String> tblClTedavi;
+    @FXML
+    private TableColumn<Randevu, String> tblClTarihi;
+    @FXML
+    private TableColumn<Randevu, String> tblClSaati;
     @FXML
     private Button randevuSil;
     
     private ObservableList rList = FXCollections.observableArrayList();
+    
+    
+    public ObservableList<Randevu> getRandevuFromFile() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(new File("src/dosyalar/randevu.txt")));
+            String line;
+            String[] s;
+            while ((line = br.readLine()) != null) {
+                s = line.split("\t");
+                Randevu r = new Randevu(Integer.parseInt(s[0]), s[1], s[2], s[3], s[4], s[5]);
+                rList.add(r);
+            }
+            br.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return rList;
+    }
        
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        rList.removeAll(rList);
+        tblClID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tblClDoktorAdi.setCellValueFactory(new PropertyValueFactory<>("doktor"));
+        tblClHastaAdi.setCellValueFactory(new PropertyValueFactory<>("hasta"));
+        tblClTedavi.setCellValueFactory(new PropertyValueFactory<>("tedavi"));
+        tblClTarihi.setCellValueFactory(new PropertyValueFactory<>("randevuTarihi"));
+        tblClSaati.setCellValueFactory(new PropertyValueFactory<>("saat"));
+        randevuListele.setItems(getRandevuFromFile());
+        randevuListele.setItems(rList);
+        
+        
+        randevuSil.setOnAction(e->{
+            Randevu seciliRandevu = randevuListele.getSelectionModel().getSelectedItem();
+            randevuListele.getItems().remove(seciliRandevu);
+            rList.remove(seciliRandevu);
+            DosyaIslemleri.dosyayaYaz(rList, "src/dosyalar/hasta.txt");
+        });
     }    
 
     @FXML
@@ -61,6 +102,28 @@ public class RandevuController implements Initializable {
 
     @FXML
     private void randevuDuzenleDialog(ActionEvent event) {
+        if (randevuListele.getSelectionModel().getSelectedItem() == null) {
+            return;
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("randevuDuzenle.fxml"));
+            Parent parent = loader.load();
+            RandevuDuzenleController randevuDuzenle = loader.<RandevuDuzenleController>getController();
+            Randevu r = randevuListele.getSelectionModel().getSelectedItem();
+            loader.setController(randevuDuzenle);
+            randevuDuzenle.initData(r);
+            Stage duzenleStage = new Stage();
+            Scene scene = new Scene(parent);
+            duzenleStage.setTitle("Randevu Düzenle");
+            randevuDuzenle.setRandevuList(rList);
+
+            duzenleStage.initModality(Modality.APPLICATION_MODAL);
+            duzenleStage.setScene(scene);
+            duzenleStage.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
 }

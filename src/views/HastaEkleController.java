@@ -59,7 +59,9 @@ public class HastaEkleController implements Initializable {
         Hasta h = new Hasta(hastaId, hastaAdSoyad, hastaTeleonNo, hastaMail);
         hastaList.add(h);
         DosyaIslemleri.dosyayaYaz(hastaList, "src/dosyalar/hasta.txt");
-
+        
+        
+        
         closeStage(event);
     }
 

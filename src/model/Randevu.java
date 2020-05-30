@@ -1,18 +1,16 @@
 
 package model;
 
-import java.time.LocalDate;
-
 public class Randevu {
 
     private int id;
     private String doktor;
     private String hasta;
     private String tedavi;
-    private LocalDate randevuTarihi;
+    private String randevuTarihi;
     private String saat;
 
-    public Randevu(int id, String doktor, String hasta, String tedavi, LocalDate randevuTarihi, String saat) {
+    public Randevu(int id, String doktor, String hasta, String tedavi, String randevuTarihi, String saat) {
         this.id = id;
         this.doktor = doktor;
         this.hasta = hasta;
@@ -20,6 +18,8 @@ public class Randevu {
         this.randevuTarihi = randevuTarihi;
         this.saat = saat;
     }
+
+    
 
     public int getId() {
         return id;
@@ -61,18 +61,19 @@ public class Randevu {
         this.saat = saat;
     } 
 
-    public LocalDate getRandevuTarihi() {
+    public String getRandevuTarihi() {
         return randevuTarihi;
     }
 
-    public void setRandevuTarihi(LocalDate randevuTarihi) {
+    public void setRandevuTarihi(String randevuTarihi) {
         this.randevuTarihi = randevuTarihi;
     }
 
     @Override
     public String toString() {
-        return  getId() + "\t" + getDoktor() + "\t" + getHasta() + "\t" + getTedavi() + "\t" + getRandevuTarihi() + "\t" + getSaat();
+        return  getId() + "\t" + getDoktor() + "\t" + getHasta() + "\t" + getTedavi() + "\t" + getRandevuTarihi() + "\t" + getSaat() ;
     }
+
     
     
 
