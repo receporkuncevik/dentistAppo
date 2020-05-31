@@ -28,7 +28,7 @@ public class Hasta {
     public static ObservableList<String> getHastaAdiFromFile() {
         ObservableList<String> hastaAdi = FXCollections.observableArrayList();
         try {
-            BufferedReader br = new BufferedReader(new FileReader(new File("src/dosyalar/hasta.txt")));
+            BufferedReader br = DosyaIslemleri.dosyayiCagir("hasta");
             String line;
             String[] satir;
             while ((line = br.readLine()) != null) {

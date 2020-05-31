@@ -20,7 +20,7 @@ public class Tedavi {
     public static ObservableList<String> getTedaviAdiFromFile() {
         ObservableList<String> tedaviAdi = FXCollections.observableArrayList();
         try {
-            BufferedReader br = new BufferedReader(new FileReader(new File("src/dosyalar/tedavi.txt")));
+            BufferedReader br = DosyaIslemleri.dosyayiCagir("tedavi");
             String line;
             String[] satir;
             while ((line = br.readLine()) != null) {

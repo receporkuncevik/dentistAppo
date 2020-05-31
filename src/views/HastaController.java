@@ -47,7 +47,7 @@ public class HastaController implements Initializable {
 
     public static ObservableList<Hasta> getHastaFromFile() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(new File("src/dosyalar/hasta.txt")));
+            BufferedReader br = DosyaIslemleri.dosyayiCagir("hasta");
             String line;
             String[] satir;
             while ((line = br.readLine()) != null) {
@@ -119,7 +119,7 @@ public class HastaController implements Initializable {
             Hasta seciliDoktor = hastaListele.getSelectionModel().getSelectedItem();
             hastaListele.getItems().remove(seciliDoktor);
             hList.remove(seciliDoktor);
-            DosyaIslemleri.dosyayaYaz(hList, "src/dosyalar/hasta.txt");
+            DosyaIslemleri.dosyayaYaz(hList, "hasta");
         });
 
      

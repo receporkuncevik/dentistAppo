@@ -55,7 +55,7 @@ public class DoktorController implements Initializable {
 
     private ObservableList<Doktor> getDoktorFromFile() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(new File("src/dosyalar/doktor.txt")));
+            BufferedReader br = DosyaIslemleri.dosyayiCagir("doktor");
             String line;
             String[] satir;
             while ((line = br.readLine()) != null) {
@@ -135,7 +135,7 @@ public class DoktorController implements Initializable {
             Doktor seciliDoktor = doktorListele.getSelectionModel().getSelectedItem();
             doktorListele.getItems().remove(seciliDoktor);
             dList.remove(seciliDoktor);
-            DosyaIslemleri.dosyayaYaz(dList, "src/dosyalar/doktor.txt");
+            DosyaIslemleri.dosyayaYaz(dList, "doktor");
         });
     }
 

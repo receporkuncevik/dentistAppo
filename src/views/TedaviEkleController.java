@@ -56,11 +56,11 @@ public class TedaviEkleController implements Initializable {
         if ("Dolgu".equals(tedaviAdi)) {
             Tedavi t1 = new Dolgu(tedaviID, tedaviAdi, tedaviAciklama);
             tedaviList.add(t1);
-            DosyaIslemleri.dosyayaYaz(tedaviList, "src/dosyalar/tedavi.txt");
+            DosyaIslemleri.dosyayaYaz(tedaviList, "tedavi");
         } else if ("Dis Cekimi".equals(tedaviAdi)) {
             Tedavi dc = new DisCekimi(tedaviID, tedaviAdi, tedaviAciklama);
             tedaviList.add(dc);
-            DosyaIslemleri.dosyayaYaz(tedaviList, "src/dosyalar/tedavi.txt");
+            DosyaIslemleri.dosyayaYaz(tedaviList, "tedavi");
         }     
         closeStage(event);
     }

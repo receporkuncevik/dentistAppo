@@ -2,8 +2,6 @@
 package views;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -50,10 +48,12 @@ public class RandevuController implements Initializable {
     @FXML
     private TextField txtArama;
     
+    private final static String dbFileName = "randevu";
     
+   
     public ObservableList<Randevu> getRandevuFromFile() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(new File("src/dosyalar/randevu.txt")));
+            BufferedReader br = DosyaIslemleri.dosyayiCagir(dbFileName);
             String line;
             String[] s;
             while ((line = br.readLine()) != null) {
@@ -117,7 +117,7 @@ public class RandevuController implements Initializable {
             Randevu seciliRandevu = randevuListele.getSelectionModel().getSelectedItem();
             randevuListele.getItems().remove(seciliRandevu);
             rList.remove(seciliRandevu);
-            DosyaIslemleri.dosyayaYaz(rList, "src/dosyalar/hasta.txt");
+            DosyaIslemleri.dosyayaYaz(rList, "hasta");
         });
     }    
 

@@ -1,3 +1,0 @@
-1	Tolga Demiralp	5555555	tolga@hotmail.com
-2	Ahmet Kıllı	4444444	ahmet@gmail.com
-3	Recep Orkun Çevik	34545	recep@gmail.com

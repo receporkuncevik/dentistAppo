@@ -93,7 +93,7 @@ public class RandevuDuzenleController implements Initializable {
         randevuList.remove(secilenRandevu);
         Randevu r = new Randevu(id, doktorAdi, hastaAdi, tedavi, randevuTarihi, saat);
         randevuList.add(r);
-        DosyaIslemleri.dosyayaYaz(randevuList, "src/dosyalar/randevu.txt");
+        DosyaIslemleri.dosyayaYaz(randevuList, "randevu.txt");
     
         closeStage(event);
     }

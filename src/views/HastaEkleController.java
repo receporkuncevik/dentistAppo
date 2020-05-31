@@ -58,7 +58,8 @@ public class HastaEkleController implements Initializable {
         String hastaMail = txtMail.getText().trim();
         Hasta h = new Hasta(hastaId, hastaAdSoyad, hastaTeleonNo, hastaMail);
         hastaList.add(h);
-        DosyaIslemleri.dosyayaYaz(hastaList, "src/dosyalar/hasta.txt");
+        //Dosyaya yazdıgım kısım burası
+        DosyaIslemleri.dosyayaYaz(hastaList, "hasta");
         
         
         

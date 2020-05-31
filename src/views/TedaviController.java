@@ -47,7 +47,7 @@ public class TedaviController implements Initializable {
 
     private ObservableList<Tedavi> getTedaviFromFile() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(new File("src/dosyalar/tedavi.txt")));
+            BufferedReader br = DosyaIslemleri.dosyayiCagir("tedavi");
             String line;
             String[] satir;
             while ((line = br.readLine()) != null) {
@@ -79,7 +79,7 @@ public class TedaviController implements Initializable {
             Tedavi seciliTedavi = tedaviListesi.getSelectionModel().getSelectedItem();
             tedaviListesi.getItems().remove(seciliTedavi);
             tList.remove(seciliTedavi);
-            DosyaIslemleri.dosyayaYaz(tList, "src/dosyalar/tedavi.txt");
+            DosyaIslemleri.dosyayaYaz(tList, "tedavi");
         });
     }
 

@@ -69,12 +69,12 @@ public class DoktorDuzenleController implements Initializable {
             doktorList.remove(secilenDoktor);
             Cerrah c = new Cerrah(doktorId, doktorAdSoyad, doktorTelefon, doktorCinsiyet, doktorUnvan);
             doktorList.add(c);
-            DosyaIslemleri.dosyayaYaz(doktorList, "src/dosyalar/doktor.txt");
+            DosyaIslemleri.dosyayaYaz(doktorList, "doktor");
         } else if ("Ortodonti".equals(doktorUnvan)) {
             doktorList.remove(secilenDoktor);
             Ortodonti o = new Ortodonti(doktorId, doktorAdSoyad, doktorTelefon, doktorCinsiyet, doktorUnvan);
             doktorList.add(o);
-            DosyaIslemleri.dosyayaYaz(doktorList, "src/dosyalar/doktor.txt");
+            DosyaIslemleri.dosyayaYaz(doktorList, "doktor");
         }
         closeStage(event);
     }

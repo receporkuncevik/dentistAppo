@@ -67,11 +67,11 @@ public class DoktorEkleController implements Initializable {
         if ("Cerrah".equals(doktorUnvan)) {
             Cerrah c = new Cerrah(doktorId, doktorAdSoyad, doktorTelefon, doktorCinsiyet, doktorUnvan);
             doktorList.add(c);
-            DosyaIslemleri.dosyayaYaz(doktorList, "src/dosyalar/doktor.txt");
+            DosyaIslemleri.dosyayaYaz(doktorList, "doktor");
         } else if ("Ortodonti".equals(doktorUnvan)) {
             Ortodonti o = new Ortodonti(doktorId, doktorAdSoyad, doktorTelefon, doktorCinsiyet, doktorUnvan);
             doktorList.add(o);
-            DosyaIslemleri.dosyayaYaz(doktorList, "src/dosyalar/doktor.txt");
+            DosyaIslemleri.dosyayaYaz(doktorList, "doktor");
         }     
         closeStage(event);
     }

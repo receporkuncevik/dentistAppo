@@ -59,12 +59,12 @@ public class TedaviDuzenleController implements Initializable {
             tedaviList.remove(secilenTedavi);
             Dolgu d = new Dolgu(tedaviID, tedaviAdi, tedaviAciklama);
             tedaviList.add(d);
-            DosyaIslemleri.dosyayaYaz(tedaviList, "src/dosyalar/tedavi.txt");
+            DosyaIslemleri.dosyayaYaz(tedaviList, "tedavi");
         } else if ("Dis Cekimi".equals(tedaviAdi)) {
             tedaviList.remove(secilenTedavi);
             DisCekimi dc = new DisCekimi(tedaviID, tedaviAdi, tedaviAciklama);
             tedaviList.add(dc);
-            DosyaIslemleri.dosyayaYaz(tedaviList, "src/dosyalar/tedavi.txt");
+            DosyaIslemleri.dosyayaYaz(tedaviList, "tedavi");
         }     
         closeStage(event);
     }
