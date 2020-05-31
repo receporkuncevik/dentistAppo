@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="763.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.RandevuController">
    <children>
-      <HBox layoutY="24.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="67.0" prefWidth="740.0" AnchorPane.bottomAnchor="672.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
+      <HBox layoutX="1.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="67.0" prefWidth="740.0" AnchorPane.bottomAnchor="682.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="14.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="28.0" prefWidth="181.0" text="Randevu Listesi">
                <HBox.margin>
@@ -42,7 +43,7 @@
             </StackPane>
          </children>
       </HBox>
-      <TableView fx:id="randevuListele" layoutX="16.0" layoutY="135.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="546.0" prefWidth="714.0" AnchorPane.bottomAnchor="87.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="130.0">
+      <TableView fx:id="randevuListele" layoutX="13.0" layoutY="157.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="546.0" prefWidth="714.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="157.0">
          <columns>
             <TableColumn fx:id="tblClID" prefWidth="57.0" text="ID" />
             <TableColumn fx:id="tblClDoktorAdi" prefWidth="142.0" text="Doktor Adı" />
@@ -52,7 +53,7 @@
             <TableColumn fx:id="tblClSaati" prefWidth="125.0" text="Randevu Saati" />
          </columns>
       </TableView>
-      <HBox alignment="BASELINE_RIGHT" layoutX="91.0" layoutY="690.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="46.0" prefWidth="627.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="690.0">
+      <HBox alignment="BASELINE_RIGHT" layoutX="92.0" layoutY="703.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="46.0" prefWidth="627.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="703.0">
          <children>
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#randevuDuzenleDialog" style="-fx-background-color: #f1f2f6;" text="Düzenle">
                <graphic>
@@ -80,5 +81,6 @@
             </Button>
          </children>
       </HBox>
+      <TextField fx:id="txtArama" layoutX="92.0" layoutY="102.0" prefHeight="25.0" prefWidth="544.0" promptText="Arama Alanı" />
    </children>
 </AnchorPane>

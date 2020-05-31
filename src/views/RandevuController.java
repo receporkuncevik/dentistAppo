@@ -9,6 +9,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -44,6 +47,8 @@ public class RandevuController implements Initializable {
     private Button randevuSil;
     
     private ObservableList rList = FXCollections.observableArrayList();
+    @FXML
+    private TextField txtArama;
     
     
     public ObservableList<Randevu> getRandevuFromFile() {
@@ -75,6 +80,37 @@ public class RandevuController implements Initializable {
         tblClSaati.setCellValueFactory(new PropertyValueFactory<>("saat"));
         randevuListele.setItems(getRandevuFromFile());
         randevuListele.setItems(rList);
+        
+        //Arama
+        
+        FilteredList<Randevu> filteredRandevu = new FilteredList<>(rList,b->true);
+        
+        txtArama.textProperty().addListener(((observable,oldValue,newValue) -> {
+            filteredRandevu.setPredicate(randevu -> {
+                if(newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+                
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if(randevu.getDoktor().toLowerCase().indexOf(lowerCaseFilter)!= -1){
+                    return true;
+                }else if(randevu.getHasta().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }else if(randevu.getTedavi().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }else{
+                    return false;
+                }
+            });
+            
+        }));
+        
+        SortedList<Randevu> sortedRandevu = new SortedList<>(filteredRandevu);
+        
+        sortedRandevu.comparatorProperty().bind(randevuListele.comparatorProperty());
+        
+        randevuListele.setItems(sortedRandevu);
         
         
         randevuSil.setOnAction(e->{

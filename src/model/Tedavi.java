@@ -8,11 +8,11 @@ import javafx.collections.ObservableList;
 
 public class Tedavi {
 
-    private int tedavi_id;
+    private int tedavi_id = 1;
     private String tedavi_adi;
 
     public Tedavi(int tedavi_id, String tedavi_adi) {
-        this.tedavi_id = tedavi_id;
+        this.tedavi_id =tedavi_id;
         this.tedavi_adi = tedavi_adi;
     }
     
