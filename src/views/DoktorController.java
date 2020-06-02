@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -31,7 +32,7 @@ public class DoktorController implements Initializable {
     static ObservableList<Doktor> dList = FXCollections.observableArrayList();
     @FXML
     private AnchorPane doktorPanel;
-    
+
     @FXML
     private Button doktorSil;
 
@@ -74,7 +75,7 @@ public class DoktorController implements Initializable {
         }
         return dList;
     }
-   
+
     @FXML
     void doktorEkleDialog(ActionEvent event) throws IOException {
 
@@ -85,33 +86,38 @@ public class DoktorController implements Initializable {
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
- 
-        
+
         stage.setScene(scene);
         stage.showAndWait();
 
     }
-    
+
     @FXML
     void doktorDuzenleDialog(ActionEvent event) throws IOException {
-        if(doktorListele.getSelectionModel().getSelectedItem() == null) return;
-        
+        if (doktorListele.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Lütfen Tablodan Kayıt Seçiniz.");
+            alert.showAndWait();
+        }
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("doktorDuzenle.fxml"));
-            Parent parent = loader.load();
-            DoktorDuzenleController doktorDuzenle = loader.<DoktorDuzenleController>getController();
-            Doktor d = doktorListele.getSelectionModel().getSelectedItem();
-            loader.setController(doktorDuzenle);
-            doktorDuzenle.initData(d);
-            Stage duzenleStage = new Stage();
-            Scene scene = new Scene(parent);
-            duzenleStage.setTitle("Doktor Düzenle");
-            doktorDuzenle.setDoktorList(dList);
-            
-            duzenleStage.initModality(Modality.APPLICATION_MODAL);
-            duzenleStage.setScene(scene);
-            duzenleStage.showAndWait();
-            
+            if (doktorListele.getSelectionModel().getSelectedItem() != null) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("doktorDuzenle.fxml"));
+                Parent parent = loader.load();
+                DoktorDuzenleController doktorDuzenle = loader.<DoktorDuzenleController>getController();
+                Doktor d = doktorListele.getSelectionModel().getSelectedItem();
+                loader.setController(doktorDuzenle);
+                doktorDuzenle.initData(d);
+                Stage duzenleStage = new Stage();
+                Scene scene = new Scene(parent);
+                duzenleStage.setTitle("Doktor Düzenle");
+                doktorDuzenle.setDoktorList(dList);
+
+                duzenleStage.initModality(Modality.APPLICATION_MODAL);
+                duzenleStage.setScene(scene);
+                duzenleStage.showAndWait();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -119,19 +125,16 @@ public class DoktorController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        dList.removeAll(dList); 
+        dList.removeAll(dList);
         tID.setCellValueFactory(new PropertyValueFactory<>("id"));
         tAdSoyad.setCellValueFactory(new PropertyValueFactory<>("isimSoyisim"));
         tPhone.setCellValueFactory(new PropertyValueFactory<>("telefonNo"));
         tCinsiyet.setCellValueFactory(new PropertyValueFactory<>("cinsiyet"));
         tUnvan.setCellValueFactory(new PropertyValueFactory<>("unvan"));
         doktorListele.setItems(getDoktorFromFile());
-        //doktorListele.getColumns().addAll(tID, tAdSoyad, tPhone, tCinsiyet, tUnvan);
         doktorListele.setItems(dList);
-        
-        
-        
-        doktorSil.setOnAction(e->{
+
+        doktorSil.setOnAction(e -> {
             Doktor seciliDoktor = doktorListele.getSelectionModel().getSelectedItem();
             doktorListele.getItems().remove(seciliDoktor);
             dList.remove(seciliDoktor);

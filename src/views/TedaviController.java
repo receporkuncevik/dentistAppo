@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -71,11 +72,9 @@ public class TedaviController implements Initializable {
         tabloTedaviAdi.setCellValueFactory(new PropertyValueFactory<>("tedavi_adi"));
         tabloTedaviAciklama.setCellValueFactory(new PropertyValueFactory<>("tedaviAciklama"));
         tedaviListesi.setItems(getTedaviFromFile());
-        //tedaviListesi.getColumns().addAll(tabloId, tabloTedaviAdi, tabloTedaviAciklama);
         tedaviListesi.setItems(tList);
-        
-        
-        tedaviSil.setOnAction(e->{
+
+        tedaviSil.setOnAction(e -> {
             Tedavi seciliTedavi = tedaviListesi.getSelectionModel().getSelectedItem();
             tedaviListesi.getItems().remove(seciliTedavi);
             tList.remove(seciliTedavi);
@@ -101,24 +100,30 @@ public class TedaviController implements Initializable {
     @FXML
     void tedaviDuzenleDialog(ActionEvent event) {
 
-        if(tedaviListesi.getSelectionModel().getSelectedItem() == null) return;
-        
+        if (tedaviListesi.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Lütfen Tablodan Kayıt Seçiniz.");
+            alert.showAndWait();
+        }
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("tedaviDuzenle.fxml"));
-            Parent parent = loader.load();
-            TedaviDuzenleController tedaviDuzenle = loader.<TedaviDuzenleController>getController();
-            Tedavi t = tedaviListesi.getSelectionModel().getSelectedItem();
-            loader.setController(tedaviDuzenle);
-            tedaviDuzenle.initData(t);
-            Stage duzenleStage = new Stage();
-            Scene scene = new Scene(parent);
-            duzenleStage.setTitle("Doktor Düzenle");
-            tedaviDuzenle.setTedaviList(tList);
-            
-            duzenleStage.initModality(Modality.APPLICATION_MODAL);
-            duzenleStage.setScene(scene);
-            duzenleStage.showAndWait();
-            
+            if (tedaviListesi.getSelectionModel().getSelectedItem() != null) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("tedaviDuzenle.fxml"));
+                Parent parent = loader.load();
+                TedaviDuzenleController tedaviDuzenle = loader.<TedaviDuzenleController>getController();
+                Tedavi t = tedaviListesi.getSelectionModel().getSelectedItem();
+                loader.setController(tedaviDuzenle);
+                tedaviDuzenle.initData(t);
+                Stage duzenleStage = new Stage();
+                Scene scene = new Scene(parent);
+                duzenleStage.setTitle("Doktor Düzenle");
+                tedaviDuzenle.setTedaviList(tList);
+
+                duzenleStage.initModality(Modality.APPLICATION_MODAL);
+                duzenleStage.setScene(scene);
+                duzenleStage.showAndWait();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

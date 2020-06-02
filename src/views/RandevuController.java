@@ -1,4 +1,3 @@
-
 package views;
 
 import java.io.BufferedReader;
@@ -15,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -43,14 +43,13 @@ public class RandevuController implements Initializable {
     private TableColumn<Randevu, String> tblClSaati;
     @FXML
     private Button randevuSil;
-    
+
     private ObservableList rList = FXCollections.observableArrayList();
     @FXML
     private TextField txtArama;
-    
+
     private final static String dbFileName = "randevu";
-    
-   
+
     public ObservableList<Randevu> getRandevuFromFile() {
         try {
             BufferedReader br = DosyaIslemleri.dosyayiCagir(dbFileName);
@@ -67,8 +66,7 @@ public class RandevuController implements Initializable {
         }
         return rList;
     }
-       
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         rList.removeAll(rList);
@@ -80,46 +78,38 @@ public class RandevuController implements Initializable {
         tblClSaati.setCellValueFactory(new PropertyValueFactory<>("saat"));
         randevuListele.setItems(getRandevuFromFile());
         randevuListele.setItems(rList);
-        
+
         //Arama
-        
-        FilteredList<Randevu> filteredRandevu = new FilteredList<>(rList,b->true);
-        
-        txtArama.textProperty().addListener(((observable,oldValue,newValue) -> {
+        FilteredList<Randevu> filteredRandevu = new FilteredList<>(rList, b -> true);
+
+        txtArama.textProperty().addListener(((observable, oldValue, newValue) -> {
             filteredRandevu.setPredicate(randevu -> {
-                if(newValue == null || newValue.isEmpty()){
+                if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-                
                 String lowerCaseFilter = newValue.toLowerCase();
-                
-                if(randevu.getDoktor().toLowerCase().indexOf(lowerCaseFilter)!= -1){
+                if (randevu.getDoktor().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
-                }else if(randevu.getHasta().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                } else if (randevu.getHasta().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
-                }else if(randevu.getTedavi().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                } else if (randevu.getTedavi().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
             });
-            
+            SortedList<Randevu> sortedRandevu = new SortedList<>(filteredRandevu);
+            sortedRandevu.comparatorProperty().bind(randevuListele.comparatorProperty());
+            randevuListele.setItems(sortedRandevu);
         }));
-        
-        SortedList<Randevu> sortedRandevu = new SortedList<>(filteredRandevu);
-        
-        sortedRandevu.comparatorProperty().bind(randevuListele.comparatorProperty());
-        
-        randevuListele.setItems(sortedRandevu);
-        
-        
-        randevuSil.setOnAction(e->{
+
+        randevuSil.setOnAction(e -> {
             Randevu seciliRandevu = randevuListele.getSelectionModel().getSelectedItem();
             randevuListele.getItems().remove(seciliRandevu);
             rList.remove(seciliRandevu);
             DosyaIslemleri.dosyayaYaz(rList, "hasta");
         });
-    }    
+    }
 
     @FXML
     private void randevuEkleDialog(ActionEvent event) throws IOException {
@@ -130,36 +120,37 @@ public class RandevuController implements Initializable {
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
- 
         stage.setScene(scene);
         stage.showAndWait();
-
     }
 
     @FXML
     private void randevuDuzenleDialog(ActionEvent event) {
         if (randevuListele.getSelectionModel().getSelectedItem() == null) {
-            return;
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Lütfen Tablodan Kayıt Seçiniz.");
+            alert.showAndWait();
         }
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("randevuDuzenle.fxml"));
-            Parent parent = loader.load();
-            RandevuDuzenleController randevuDuzenle = loader.<RandevuDuzenleController>getController();
-            Randevu r = randevuListele.getSelectionModel().getSelectedItem();
-            loader.setController(randevuDuzenle);
-            randevuDuzenle.initData(r);
-            Stage duzenleStage = new Stage();
-            Scene scene = new Scene(parent);
-            duzenleStage.setTitle("Randevu Düzenle");
-            randevuDuzenle.setRandevuList(rList);
-
-            duzenleStage.initModality(Modality.APPLICATION_MODAL);
-            duzenleStage.setScene(scene);
-            duzenleStage.showAndWait();
-
+            if (randevuListele.getSelectionModel().getSelectedItem() != null) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("randevuDuzenle.fxml"));
+                Parent parent = loader.load();
+                RandevuDuzenleController randevuDuzenle = loader.<RandevuDuzenleController>getController();
+                Randevu r = randevuListele.getSelectionModel().getSelectedItem();
+                randevuDuzenle.initData(r);
+                loader.setController(randevuDuzenle);
+                Stage duzenleStage = new Stage();
+                Scene scene = new Scene(parent);
+                duzenleStage.setTitle("Randevu Düzenle");
+                randevuDuzenle.setRandevuList(rList);
+                duzenleStage.initModality(Modality.APPLICATION_MODAL);
+                duzenleStage.setScene(scene);
+                duzenleStage.showAndWait();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
 }

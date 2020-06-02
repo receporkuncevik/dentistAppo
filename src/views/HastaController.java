@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -22,7 +23,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.DosyaIslemleri;
 import model.Hasta;
-
 
 public class HastaController implements Initializable {
 
@@ -80,24 +80,28 @@ public class HastaController implements Initializable {
     @FXML
     private void hastaDuzenleDialog(ActionEvent event) {
         if (hastaListele.getSelectionModel().getSelectedItem() == null) {
-            return;
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Lütfen Tablodan Kayıt Seçiniz.");
+            alert.showAndWait();
         }
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("hastaDuzenle.fxml"));
-            Parent parent = loader.load();
-            HastaDuzenleController hastaDuzenle = loader.<HastaDuzenleController>getController();
-            Hasta h = hastaListele.getSelectionModel().getSelectedItem();
-            loader.setController(hastaDuzenle);
-            hastaDuzenle.initData(h);
-            Stage duzenleStage = new Stage();
-            Scene scene = new Scene(parent);
-            duzenleStage.setTitle("Hasta Düzenle");
-            hastaDuzenle.setHastaList(hList);
+            if (hastaListele.getSelectionModel().getSelectedItem() != null) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("hastaDuzenle.fxml"));
+                Parent parent = loader.load();
+                HastaDuzenleController hastaDuzenle = loader.<HastaDuzenleController>getController();
+                Hasta h = hastaListele.getSelectionModel().getSelectedItem();
+                loader.setController(hastaDuzenle);
+                hastaDuzenle.initData(h);
+                Stage duzenleStage = new Stage();
+                Scene scene = new Scene(parent);
+                duzenleStage.setTitle("Hasta Düzenle");
+                hastaDuzenle.setHastaList(hList);
 
-            duzenleStage.initModality(Modality.APPLICATION_MODAL);
-            duzenleStage.setScene(scene);
-            duzenleStage.showAndWait();
-
+                duzenleStage.initModality(Modality.APPLICATION_MODAL);
+                duzenleStage.setScene(scene);
+                duzenleStage.showAndWait();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -113,15 +117,13 @@ public class HastaController implements Initializable {
 
         hastaListele.setItems(getHastaFromFile());
         hastaListele.setItems(hList);
-        
-        
-        hastaSil.setOnAction(e->{
+
+        hastaSil.setOnAction(e -> {
             Hasta seciliDoktor = hastaListele.getSelectionModel().getSelectedItem();
             hastaListele.getItems().remove(seciliDoktor);
             hList.remove(seciliDoktor);
             DosyaIslemleri.dosyayaYaz(hList, "hasta");
         });
 
-     
     }
 }

@@ -1,8 +1,5 @@
 package model;
 
-import javafx.collections.ObservableList;
-import views.DoktorEkleController;
-
 public class Cerrah extends Doktor  {
 
     private String unvan;
