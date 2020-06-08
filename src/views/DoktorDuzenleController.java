@@ -15,7 +15,9 @@ import javafx.stage.Stage;
 import model.Cerrah;
 import model.Doktor;
 import model.DosyaIslemleri;
+import model.Endodonti;
 import model.Ortodonti;
+import model.Pedodonti;
 
 public class DoktorDuzenleController implements Initializable {
 
@@ -41,7 +43,7 @@ public class DoktorDuzenleController implements Initializable {
     private ComboBox<String> cmbDuzenleUnvan;
 
     ObservableList<String> cinsiyet = FXCollections.observableArrayList("Kadın", "Erkek");
-    ObservableList<String> unvan = FXCollections.observableArrayList("Cerrah", "Ortodonti");
+    ObservableList<String> unvan = FXCollections.observableArrayList("Cerrah", "Ortodonti", "Pedodonti", "Endodonti");
     private static ObservableList<Doktor> doktorList;
 
     public static void setDoktorList(ObservableList<Doktor> doktorList) {
@@ -74,6 +76,16 @@ public class DoktorDuzenleController implements Initializable {
             doktorList.remove(secilenDoktor);
             Ortodonti o = new Ortodonti(doktorId, doktorAdSoyad, doktorTelefon, doktorCinsiyet, doktorUnvan);
             doktorList.add(o);
+            DosyaIslemleri.dosyayaYaz(doktorList, "doktor");
+        } else if ("Pedodonti".equals(doktorUnvan)) {
+            doktorList.remove(secilenDoktor);
+            Pedodonti p = new Pedodonti(doktorId, doktorAdSoyad, doktorTelefon, doktorCinsiyet, doktorUnvan);
+            doktorList.add(p);
+            DosyaIslemleri.dosyayaYaz(doktorList, "doktor");
+        } else if ("Endodonti".equals(doktorUnvan)) {
+            doktorList.remove(secilenDoktor);
+            Endodonti e = new Endodonti(doktorId, doktorAdSoyad, doktorTelefon, doktorCinsiyet, doktorUnvan);
+            doktorList.add(e);
             DosyaIslemleri.dosyayaYaz(doktorList, "doktor");
         }
         closeStage(event);

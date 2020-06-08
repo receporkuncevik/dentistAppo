@@ -2,6 +2,7 @@ package views;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,9 @@ import model.DisCekimi;
 import model.Tedavi;
 import model.Dolgu;
 import model.DosyaIslemleri;
+import model.KanalTedavi;
+import model.ProtezDis;
+import org.controlsfx.control.textfield.TextFields;
 
 public class TedaviDuzenleController implements Initializable {
 
@@ -30,20 +34,21 @@ public class TedaviDuzenleController implements Initializable {
     private TextArea txtAciklama;
 
     private static ObservableList<Tedavi> tedaviList;
-    
+    ObservableList<String> tedaviAdi = FXCollections.observableArrayList("Dolgu", "Diş Çekimi", "Protez Diş", "Kanal Tedavi");
+
     private Tedavi secilenTedavi;
-    
+
     public void initData(Tedavi tedavi) {
         secilenTedavi = tedavi;
         txtId.setText(String.valueOf(secilenTedavi.getTedavi_id()));
-        txtAd.setText(secilenTedavi.getTedavi_adi());        
+        txtAd.setText(secilenTedavi.getTedavi_adi());
+
+        TextFields.bindAutoCompletion(txtAd, tedaviAdi);
     }
 
     public static void setTedaviList(ObservableList<Tedavi> tedaviList) {
         TedaviDuzenleController.tedaviList = tedaviList;
     }
-    
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -52,7 +57,7 @@ public class TedaviDuzenleController implements Initializable {
 
     @FXML
     private void tedaviDuzenle(ActionEvent event) {
-         int tedaviID = Integer.parseInt(txtId.getText().trim());
+        int tedaviID = Integer.parseInt(txtId.getText().trim());
         String tedaviAdi = txtAd.getText().trim();
         String tedaviAciklama = txtAciklama.getText().trim();
         if ("Dolgu".equals(tedaviAdi)) {
@@ -65,7 +70,17 @@ public class TedaviDuzenleController implements Initializable {
             DisCekimi dc = new DisCekimi(tedaviID, tedaviAdi, tedaviAciklama);
             tedaviList.add(dc);
             DosyaIslemleri.dosyayaYaz(tedaviList, "tedavi");
-        }     
+        } else if ("Protez Diş".equals(tedaviAdi)) {
+            tedaviList.remove(secilenTedavi);
+            ProtezDis pd = new ProtezDis(tedaviID, tedaviAdi, tedaviAciklama);
+            tedaviList.add(pd);
+            DosyaIslemleri.dosyayaYaz(tedaviList, "tedavi");
+        } else if ("Kanal Tedavi".equals(tedaviAdi)) {
+            tedaviList.remove(secilenTedavi);
+            KanalTedavi kt = new KanalTedavi(tedaviID, tedaviAdi, tedaviAciklama);
+            tedaviList.add(kt);
+            DosyaIslemleri.dosyayaYaz(tedaviList, "tedavi");
+        }
         closeStage(event);
     }
 
@@ -73,7 +88,7 @@ public class TedaviDuzenleController implements Initializable {
     private void tedaviDuzenleClose(ActionEvent event) {
         closeStage(event);
     }
-    
+
     private void closeStage(ActionEvent event) {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();

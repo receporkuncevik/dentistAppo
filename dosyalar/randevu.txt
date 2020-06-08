@@ -2,3 +2,4 @@
 2	Recep	tolga	Dolgu	Çarşamba-Haz 03- 2020	14:30
 3	Recep	Hediye	Dolgu	Salı-Haz 02- 2020	15:30
 2	Recep	tolga	Dolgu	Perşembe-Tem 02- 2020	10:00
+1	Recep	Tolga	Dolgu	Cumartesi-Haz 06- 2020	10:00

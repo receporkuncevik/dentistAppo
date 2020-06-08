@@ -44,6 +44,18 @@
       </HBox>
       <HBox alignment="BASELINE_RIGHT" layoutX="91.0" layoutY="690.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="46.0" prefWidth="627.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="690.0">
          <children>
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#tedaviGoruntuleDialog" style="-fx-background-color: #f1f2f6;" text="Görüntüle">
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/images/open-menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets right="25.0" top="4.0" />
+               </HBox.margin>
+            </Button>
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#tedaviDuzenleDialog" style="-fx-background-color: #f1f2f6;" text="Düzenle">
                <graphic>
                   <ImageView fitHeight="31.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
@@ -72,9 +84,8 @@
       </HBox>
       <TableView fx:id="tedaviListesi" layoutX="270.0" layoutY="182.0" prefHeight="535.0" prefWidth="710.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="135.0">
         <columns>
-          <TableColumn fx:id="tabloId" prefWidth="64.0" text="ID" />
-          <TableColumn fx:id="tabloTedaviAdi" prefWidth="211.0" text="Tedavi Adı" />
-            <TableColumn fx:id="tabloTedaviAciklama" prefWidth="433.0" text="Tedavi Açıklama" />
+          <TableColumn fx:id="tabloId" prefWidth="200.0" text="ID" />
+          <TableColumn fx:id="tabloTedaviAdi" prefWidth="509.0" text="Tedavi Adı" />
         </columns>
       </TableView>
    </children>

@@ -20,7 +20,9 @@ import javafx.stage.WindowEvent;
 import model.Cerrah;
 import model.Doktor;
 import model.DosyaIslemleri;
+import model.Endodonti;
 import model.Ortodonti;
+import model.Pedodonti;
 
 public class DoktorEkleController implements Initializable {
 
@@ -46,7 +48,7 @@ public class DoktorEkleController implements Initializable {
     private ComboBox cmbUnvan;
 
     ObservableList<String> cinsiyet = FXCollections.observableArrayList("Kadın", "Erkek");
-    ObservableList<String> unvan = FXCollections.observableArrayList("Cerrah", "Ortodonti");
+    ObservableList<String> unvan = FXCollections.observableArrayList("Cerrah", "Ortodonti", "Pedodonti", "Endodonti");
     private static ObservableList<Doktor> doktorList;
 
     @Override
@@ -59,7 +61,7 @@ public class DoktorEkleController implements Initializable {
     }
 
     @FXML
-    void doktorEkle(ActionEvent event){
+    void doktorEkle(ActionEvent event) {
 
         int doktorId = Integer.parseInt(txtId.getText().trim());
         String doktorAdSoyad = txtAdSoyad.getText().trim();
@@ -70,11 +72,19 @@ public class DoktorEkleController implements Initializable {
             Cerrah c = new Cerrah(doktorId, doktorAdSoyad, doktorTelefon, doktorCinsiyet, doktorUnvan);
             doktorList.add(c);
             DosyaIslemleri.dosyayaYaz(doktorList, "doktor");
+        } else if ("Pedodonti".equals(doktorUnvan)) {
+            Pedodonti p = new Pedodonti(doktorId, doktorAdSoyad, doktorTelefon, doktorCinsiyet, doktorUnvan);
+            doktorList.add(p);
+            DosyaIslemleri.dosyayaYaz(doktorList, "doktor");
+        } else if ("Endodonti".equals(doktorUnvan)) {
+            Endodonti e = new Endodonti(doktorId, doktorAdSoyad, doktorTelefon, doktorCinsiyet, doktorUnvan);
+            doktorList.add(e);
+            DosyaIslemleri.dosyayaYaz(doktorList, "doktor");
         } else if ("Ortodonti".equals(doktorUnvan)) {
             Ortodonti o = new Ortodonti(doktorId, doktorAdSoyad, doktorTelefon, doktorCinsiyet, doktorUnvan);
             doktorList.add(o);
             DosyaIslemleri.dosyayaYaz(doktorList, "doktor");
-        }     
+        }
         closeStage(event);
     }
 

@@ -43,7 +43,6 @@ public class TedaviController implements Initializable {
     private TableColumn<Tedavi, Integer> tabloId = new TableColumn<>();
     @FXML
     private TableColumn<Tedavi, String> tabloTedaviAdi = new TableColumn<>();
-    @FXML
     private TableColumn<Tedavi, String> tabloTedaviAciklama = new TableColumn<>();
 
     private ObservableList<Tedavi> getTedaviFromFile() {
@@ -117,8 +116,38 @@ public class TedaviController implements Initializable {
                 tedaviDuzenle.initData(t);
                 Stage duzenleStage = new Stage();
                 Scene scene = new Scene(parent);
-                duzenleStage.setTitle("Doktor Düzenle");
+                duzenleStage.setTitle("Tedavi Düzenle");
                 tedaviDuzenle.setTedaviList(tList);
+
+                duzenleStage.initModality(Modality.APPLICATION_MODAL);
+                duzenleStage.setScene(scene);
+                duzenleStage.showAndWait();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void tedaviGoruntuleDialog(ActionEvent event) { 
+        if (tedaviListesi.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Lütfen Tablodan Kayıt Seçiniz.");
+            alert.showAndWait();
+        }
+
+        try {
+            if (tedaviListesi.getSelectionModel().getSelectedItem() != null) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("tedaviGoruntule.fxml"));
+                Parent parent = loader.load();
+                TedaviGoruntuleController tedaviGoruntule = loader.<TedaviGoruntuleController>getController();
+                Tedavi t = tedaviListesi.getSelectionModel().getSelectedItem();
+                loader.setController(tedaviGoruntule);
+                tedaviGoruntule.initData(t);
+                Stage duzenleStage = new Stage();
+                Scene scene = new Scene(parent);
+                duzenleStage.setTitle("Tedavi Görüntüle");
 
                 duzenleStage.initModality(Modality.APPLICATION_MODAL);
                 duzenleStage.setScene(scene);

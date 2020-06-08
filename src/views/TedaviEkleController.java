@@ -2,6 +2,7 @@ package views;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,8 +16,11 @@ import model.DisCekimi;
 import model.Doktor;
 import model.Dolgu;
 import model.DosyaIslemleri;
+import model.KanalTedavi;
 import model.Ortodonti;
+import model.ProtezDis;
 import model.Tedavi;
+import org.controlsfx.control.textfield.TextFields;
 
 /**
  * FXML Controller class
@@ -37,15 +41,17 @@ public class TedaviEkleController implements Initializable {
     private TextArea txtAciklama;
 
     private static ObservableList<Tedavi> tedaviList;
+    ObservableList<String> tedaviAdi = FXCollections.observableArrayList("Dolgu","Diş Çekimi","Protez Diş","Kanal Tedavi");
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        TextFields.bindAutoCompletion(txtAd, tedaviAdi);
     }
 
     @FXML
@@ -57,11 +63,19 @@ public class TedaviEkleController implements Initializable {
             Tedavi t1 = new Dolgu(tedaviID, tedaviAdi, tedaviAciklama);
             tedaviList.add(t1);
             DosyaIslemleri.dosyayaYaz(tedaviList, "tedavi");
-        } else if ("Dis Cekimi".equals(tedaviAdi)) {
+        } else if ("Diş Çekimi".equals(tedaviAdi)) {
             Tedavi dc = new DisCekimi(tedaviID, tedaviAdi, tedaviAciklama);
             tedaviList.add(dc);
             DosyaIslemleri.dosyayaYaz(tedaviList, "tedavi");
-        }     
+        } else if ("Protez Diş".equals(tedaviAdi)) {
+            Tedavi dc = new ProtezDis(tedaviID, tedaviAdi, tedaviAciklama);
+            tedaviList.add(dc);
+            DosyaIslemleri.dosyayaYaz(tedaviList, "tedavi");
+        } else if ("Kanal Tedavi".equals(tedaviAdi)) {
+            Tedavi dc = new KanalTedavi(tedaviID, tedaviAdi, tedaviAciklama);
+            tedaviList.add(dc);
+            DosyaIslemleri.dosyayaYaz(tedaviList, "tedavi");
+        }
         closeStage(event);
     }
 
