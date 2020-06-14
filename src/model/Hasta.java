@@ -19,7 +19,6 @@ public class Hasta {
 
     }
     
-    
     public static ObservableList<String> getHastaAdiFromFile() {
         ObservableList<String> hastaAdi = FXCollections.observableArrayList();
         try {

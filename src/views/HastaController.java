@@ -70,6 +70,7 @@ public class HastaController implements Initializable {
         hastaEkleController.setHastaList(hList);
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
+        stage.setTitle("Hasta Ekle");
         stage.initModality(Modality.APPLICATION_MODAL);
 
         stage.setScene(scene);

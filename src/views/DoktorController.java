@@ -85,6 +85,7 @@ public class DoktorController implements Initializable {
         doktorEkleController.setDoktorList(dList);
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
+        stage.setTitle("Doktor Ekle");
         stage.initModality(Modality.APPLICATION_MODAL);
 
         stage.setScene(scene);

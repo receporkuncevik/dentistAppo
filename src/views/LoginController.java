@@ -47,7 +47,7 @@ public class LoginController implements Initializable {
         } else {
             if (kullaniciAdi.equals(username) && sifre.equals(pass)) {
                 ((Node)event.getSource()).getScene().getWindow().hide();
-                loadWindow("home.fxml", "Dentist Appointment");
+                loadWindow("home.fxml", "Randevu Sistemi");
                     
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);

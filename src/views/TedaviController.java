@@ -90,6 +90,7 @@ public class TedaviController implements Initializable {
         tedaviEkleController.setTedaviList(tList);
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
+        stage.setTitle("Tedavi Ekle");
         stage.initModality(Modality.APPLICATION_MODAL);
 
         stage.setScene(scene);
