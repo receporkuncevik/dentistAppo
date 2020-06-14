@@ -1,2 +1,3 @@
 2	Recep	35345	Erkek	Cerrah
-3	sdfsdf	234234	Erkek	Endodonti
+1	Tolga Demiralp	345345	Erkek	Ortodonti
+3	Soner Çevik	3453453	Erkek	Pedodonti

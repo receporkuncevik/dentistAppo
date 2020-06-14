@@ -69,11 +69,15 @@ public abstract class Doktor {
     public void setCinsiyet(String cinsiyet) {
         this.cinsiyet = cinsiyet;
     }
+    
+    public String getUnvan(){
+        return getUnvan();
+    }
 
 
     @Override
     public String toString() {
-        return  id + " "+ isimSoyisim + " "+ telefonNo + " "+ cinsiyet;
+        return  getId() + "\t"+ getIsimSoyisim() + "\t"+ getTelefonNo() + "\t"+ getCinsiyet();
     }
 
 }

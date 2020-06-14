@@ -58,6 +58,7 @@ public class DoktorDuzenleController implements Initializable {
         txtDuzenleAdSoyad.setText(secilenDoktor.getIsimSoyisim());
         txtDuzenleTelefon.setText(secilenDoktor.getTelefonNo());
         cmbDuzenleCinsiyet.setValue(secilenDoktor.getCinsiyet());
+        cmbDuzenleUnvan.setValue(secilenDoktor.getUnvan());
     }
 
     @FXML
