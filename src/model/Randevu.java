@@ -19,8 +19,6 @@ public class Randevu {
         this.saat = saat;
     }
 
-    
-
     public int getId() {
         return id;
     }

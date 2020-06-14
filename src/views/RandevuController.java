@@ -129,6 +129,7 @@ public class RandevuController implements Initializable {
         if (randevuListele.getSelectionModel().getSelectedItem() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
+            alert.setTitle("OOPS!!! Bir Hata İle Karşıldı.");
             alert.setContentText("Lütfen Tablodan Kayıt Seçiniz.");
             alert.showAndWait();
         }

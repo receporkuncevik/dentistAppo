@@ -42,6 +42,7 @@ public class LoginController implements Initializable {
         if (kullaniciAdi.isEmpty() || sifre.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
+            alert.setTitle("OOPS!!! Bir Hata İle Karşıldı.");
             alert.setContentText("Alanlar Boş Geçilemez");
             alert.showAndWait();
         } else {
@@ -52,6 +53,7 @@ public class LoginController implements Initializable {
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
+                alert.setTitle("OOPS!!! Bir Hata İle Karşıldı.");
                 alert.setContentText("Kullanıcı Adı ve/veya Şifre Yanlış!");
                 alert.showAndWait();
             }
