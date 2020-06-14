@@ -25,6 +25,7 @@ public class TedaviGoruntuleController implements Initializable {
         secilenTedavi = tedavi;
         tedaviID.setText(String.valueOf(secilenTedavi.getTedavi_id()));
         tedaviAdi.setText(secilenTedavi.getTedavi_adi());
+        tedaviAciklamasi.setText(secilenTedavi.getTedaviAciklama());
     }
 
     @Override

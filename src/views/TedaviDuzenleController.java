@@ -42,6 +42,7 @@ public class TedaviDuzenleController implements Initializable {
         secilenTedavi = tedavi;
         txtId.setText(String.valueOf(secilenTedavi.getTedavi_id()));
         txtAd.setText(secilenTedavi.getTedavi_adi());
+        txtAciklama.setText(secilenTedavi.getTedaviAciklama());
 
         TextFields.bindAutoCompletion(txtAd, tedaviAdi);
     }

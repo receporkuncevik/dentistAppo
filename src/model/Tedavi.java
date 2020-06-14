@@ -55,5 +55,10 @@ public class Tedavi {
     public String toString() {
         return + getTedavi_id() + "\t" + getTedavi_adi();
     }
+    
+    
+    public String getTedaviAciklama(){
+        return getTedaviAciklama();
+    }
 
 }

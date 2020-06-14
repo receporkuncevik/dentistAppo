@@ -9,6 +9,7 @@ public class DisCekimi extends Tedavi {
         this.tedaviAciklama = tedaviAciklama;
     }
 
+    @Override
     public String getTedaviAciklama() {
         return tedaviAciklama;
     }
