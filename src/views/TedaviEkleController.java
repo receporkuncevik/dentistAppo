@@ -75,6 +75,10 @@ public class TedaviEkleController implements Initializable {
             Tedavi dc = new KanalTedavi(tedaviID, tedaviAdi, tedaviAciklama);
             tedaviList.add(dc);
             DosyaIslemleri.dosyayaYaz(tedaviList, "tedavi");
+        }else{
+            Tedavi t = new Tedavi(tedaviID, tedaviAdi);
+            tedaviList.add(t);
+            DosyaIslemleri.dosyayaYaz(tedaviList, "tedavi");
         }
         closeStage(event);
     }

@@ -16,8 +16,6 @@ public class DosyaIslemleri {
     private DosyaIslemleri() {
     }
 
-    //bu metodu tetikliyorum observable list ile yol alıyor 
-    //hani burada yazarken çünkü bütün yazma metotları ortak oldugu için ordan dosyadan veri çekiyorum sadece 
     public static void dosyayaYaz(ObservableList list, String p) {
         setDosyalarIcinAnaDizin(p);
         try (BufferedWriter yazici = new BufferedWriter(new FileWriter(path))) {

@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.DosyaIslemleri;
 import model.Hasta;
 
 public class HastaDuzenleController implements Initializable {
@@ -60,6 +61,7 @@ public class HastaDuzenleController implements Initializable {
         hastaList.remove(secilenHasta);
         Hasta h = new Hasta(hastaId, hastaAdSoyad, hastaTelefon, hastaMail);
         hastaList.add(h);
+        DosyaIslemleri.dosyayaYaz(hastaList, "hasta");
         closeStage(event);
     }
 

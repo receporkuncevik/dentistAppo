@@ -81,6 +81,11 @@ public class TedaviDuzenleController implements Initializable {
             KanalTedavi kt = new KanalTedavi(tedaviID, tedaviAdi, tedaviAciklama);
             tedaviList.add(kt);
             DosyaIslemleri.dosyayaYaz(tedaviList, "tedavi");
+        }else{
+            tedaviList.remove(secilenTedavi);
+            Tedavi t = new Tedavi(tedaviID, tedaviAdi);
+            tedaviList.add(t);
+            DosyaIslemleri.dosyayaYaz(tedaviList,  "tedavi");
         }
         closeStage(event);
     }

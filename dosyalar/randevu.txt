@@ -1,5 +1,3 @@
-1	Recep	tolga	Dolgu	Cumartesi-May 30- 2020	10:00
-2	Recep	tolga	Dolgu	Çarşamba-Haz 03- 2020	14:30
-3	Recep	Hediye	Dolgu	Salı-Haz 02- 2020	15:30
-2	Recep	tolga	Dolgu	Perşembe-Tem 02- 2020	10:00
-1	Recep	Tolga	Dolgu	Cumartesi-Haz 06- 2020	10:00
+1	Recep	Rümeysa Çalışır	Dolgu	Çarşamba-Haz 17- 2020	10:00
+2	Tolga Demiralp	Deneme Bir	Diş Çekimi	Perşembe-Haz 18- 2020	10:00
+3	Soner Çevik	İkinci Deneme	Kanal Tedavi	Pazartesi-Haz 22- 2020	13:00

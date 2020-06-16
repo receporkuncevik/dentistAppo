@@ -107,7 +107,7 @@ public class RandevuController implements Initializable {
             Randevu seciliRandevu = randevuListele.getSelectionModel().getSelectedItem();
             randevuListele.getItems().remove(seciliRandevu);
             rList.remove(seciliRandevu);
-            DosyaIslemleri.dosyayaYaz(rList, "hasta");
+            DosyaIslemleri.dosyayaYaz(rList, "randevu");
         });
     }
 
