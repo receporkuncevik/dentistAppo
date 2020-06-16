@@ -83,7 +83,7 @@ public class TedaviDuzenleController implements Initializable {
             DosyaIslemleri.dosyayaYaz(tedaviList, "tedavi");
         }else{
             tedaviList.remove(secilenTedavi);
-            Tedavi t = new Tedavi(tedaviID, tedaviAdi);
+            Tedavi t = new Dolgu(tedaviID, tedaviAdi,tedaviAciklama);
             tedaviList.add(t);
             DosyaIslemleri.dosyayaYaz(tedaviList,  "tedavi");
         }
